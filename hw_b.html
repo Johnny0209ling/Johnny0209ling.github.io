@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .active {
+            background-color: rgb(132, 199, 210);
+        }
+
+        #nav {
+            position: fixed;
+            right: 0;
+        }
+        .title {
+            background-color: #c0d4df;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="nav"></ul>
+    <h1 class="title" id="1">1111</h1>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <h1 class="title" id="2">2222</h1>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <h1 class="title" id="3">3333</h1>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <h1 class="title" id="4">4444</h1>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <p>aaijijij kikikill wowopxpx</p>
+    <script>
+        function buildNav() {
+            const titles = document.querySelectorAll('.title');
+            const navEl = document.getElementById('nav');
+            navEl.innerHTML = '';
+            titles.forEach((title, idx) => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = `#${title.id}`;
+                a.textContent = title.textContent;
+                if (idx === 0) a.classList.add('active');
+                li.appendChild(a);
+                navEl.appendChild(li);
+            });
+            return document.querySelectorAll('#nav a');
+        }
+
+        function highlightNav(titles, navLinks) {
+            for (let i = titles.length - 1; i >= 0; i--) {
+                if (titles[i].offsetTop <=
+                    document.documentElement.scrollTop + window.innerHeight / 2) {
+                    navLinks.forEach(n => {
+                        const href = n.getAttribute('href').slice(1);
+                        n.classList.toggle('active', href === titles[i].id);
+                    });
+                    break;
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const titles = document.querySelectorAll('.title');
+            const navLinks = buildNav();
+            window.addEventListener('scroll', () => highlightNav(titles, navLinks));
+        });
+    </script>
+</body>
+
+</html>
